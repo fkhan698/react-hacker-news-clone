@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./styles.css";
+import TopStoriesContainer from "./components/TopStoriesContainer.js";
+import Header from './components/Header.js'
+import { Switch, Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import NewStories from "./components/NewStories.js";
+import User from './components/User'
+import Comments from './components/Comments.js'
 
-export default App;
+
+
+
+
+
+export default function App() {
+
+    return(
+      <>
+        <Header />
+        <TopStoriesContainer />,
+        <Switch>
+          <Route exact path="/" component={TopStoriesContainer}></Route>
+          <Route exact path="/new" component={NewStories}></Route>
+          <Route exact path="/user" component={User}></Route>
+          <Route exact path="/comments/:id" component={Comments}></Route>
+        </Switch>
+      </>
+    ) 
+  }
